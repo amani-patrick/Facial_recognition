@@ -1,86 +1,93 @@
 # Face Recognition Pipeline (MediaPipe + LBPH)
 
-This project implements a full classical face-recognition pipeline using:
+A lightweight and practical face-recognition system combining:
 
-- **MediaPipe Face Mesh** : for face detection
-- **OpenCV LBPH** : for feature-based face recognition
+- MediaPipe Face Mesh for face detection
+- OpenCV LBPH for classical face recognition
+
+This project provides a complete workflow: capture → train → recognize.
 
 ---
 
-## 📂 Project Structure
+## Project Structure
 
 project/
-│── capture.py
-│── train.py
-│── predict.py
-│── dataset/ 
-│── models/ 
-│ ├── lbph_model.xml
-│ └── label_map.json
+│── capture.py          # Capture and store face images
+│── train.py            # Train the LBPH model
+│── predict.py          # Real-time face recognition
+│── dataset/            # Auto-created user image folders
+│── models/
+│     ├── lbph_model.xml
+│     └── label_map.json
 │── README.md
 
+---
 
-## 🚀 1. Capture Face Images
+## 1. Capture Face Images
 
 Run:
 
 python capture.py
 
-You will be asked:
+You will be asked to enter your name. Look into the camera and press Q to stop.
 
-Enter your name:
-
-Then look at the camera.  
-Press **Q** to stop capturing.
-
-Images are saved to:
+Images are saved in:
 
 dataset/<your_name>/
 
 ---
 
-## 🚀 2. Train the LBPH Model
+## 2. Train the LBPH Model
 
 Run:
 
 python train.py
 
-This will generate:
+This generates:
 
 models/lbph_model.xml
 models/label_map.json
 
 ---
 
-## 🚀 3. Run Face Recognition
+## 3. Real-Time Face Recognition
 
 Run:
 
 python predict.py
 
-The camera window will show:
-
-- A **green rectangle** around the face
-- The **predicted name**
+The webcam window will display:
+- A green rectangle around the face
+- The predicted name
 - The LBPH confidence score
 
-Press **Q** to quit.
+Press Q to exit.
 
+---
 
-## Requirements
-
-Install dependencies:
+## Installation
 
 pip install opencv-python mediapipe
 pip install opencv-contrib-python
 
 ---
 
-## QUICK INFO!
+## How to Use
 
-This pipeline works with **any number of people**.  
-Just repeat **capture → train → predict** and just enjoy the beauty of it.
+git clone https://github.com/amani-patrick/Facial_recognition.git
 
-## How to RUN
+cd Facial_recognition
 
-git clone
+python -m pip install mediapipe opencv-python
+
+Then run:
+1. python capture.py
+2. python train.py
+3. python predict.py
+
+---
+
+## Notes
+
+- Works with any number of people.
+- For each new user, repeat capture → train.
